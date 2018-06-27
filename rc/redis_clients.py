@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import socket
 import errno
-from itertools import izip
 
 from redis import StrictRedis
 from redis.client import list_or_args
@@ -158,7 +157,7 @@ class CommandBuffer(object):
                     while 1:
                         try:
                             sent = sock.send(item)
-                        except socket.error, e:
+                        except socket.error as e:
                             if e.errno == errno.EAGAIN:
                                 continue
                             elif e.errno == errno.EWOULDBLOCK:
@@ -223,4 +222,4 @@ class CommandBuffer(object):
         if self.command_name == 'DEL':
             rv = [1] * rv + [0] * (len(self.pending_commands) - rv)
         pending_keys = map(lambda c: c[1], self.pending_commands)
-        return dict(izip(pending_keys, rv))
+        return dict(zip(pending_keys, rv))

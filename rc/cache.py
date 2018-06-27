@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import inspect
 import functools
-from itertools import izip
 
 from rc.redis_clients import RedisClient
 from rc.redis_cluster import RedisCluster
@@ -285,7 +284,7 @@ class BaseCache(object):
         for f, args, kwargs, promise, cache_key, expire in pending_operations:
             cache_keys.append(cache_key)
         cache_results = self._raw_get_many(*cache_keys)
-        for rv, (func, args, kwargs, promise, cache_key, expire) in izip(
+        for rv, (func, args, kwargs, promise, cache_key, expire) in zip(
                 cache_results, pending_operations):
             if rv is None:
                 value = func(*args, **kwargs)
