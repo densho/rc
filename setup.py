@@ -12,7 +12,7 @@ setup(
     author='Shipeng Feng',
     author_email='fsp261@gmail.com',
     version=version,
-    url='http://github.com/fengsp/rc',
+    url='http://github.com/densho/rc',
     packages=['rc'],
     description='rc, the redis cache',
     install_requires=[
@@ -21,6 +21,6 @@ setup(
     classifiers=[
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2'
+        'Programming Language :: Python :: 3'
     ],
 )
